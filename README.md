@@ -1,73 +1,114 @@
-# Welcome to your Lovable project
+# 🚀 Pacote de Horas - Landing Page
 
-## Project info
+Landing page moderna para consultoria de tecnologia com sistema de planos de atendimento dedicado.
 
-**URL**: https://lovable.dev/projects/4d6547ac-e8e4-40da-96ea-9c344795cdb5
+## ✨ Funcionalidades
 
-## How can I edit this code?
+### 🎨 Sistema de Tema Claro/Escuro
+- **Detecção automática** da preferência do sistema
+- **Logo dinâmica**: Branca para tema escuro, padrão para tema claro
+- **Favicon dinâmico**: Adapta-se automaticamente ao tema
+- **Cores e gradientes** otimizados para cada tema
 
-There are several ways of editing your application.
+### 📱 Design Responsivo
+- Layout adaptável para desktop, tablet e mobile
+- Componentes otimizados para diferentes tamanhos de tela
+- Animações suaves e efeitos visuais modernos
 
-**Use Lovable**
+### 💬 Integração WhatsApp
+- Todos os botões CTA conectados ao WhatsApp
+- Link padronizado: `https://wa.me/5541998243692`
+- Mensagem automática para consultoria gratuita
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/4d6547ac-e8e4-40da-96ea-9c344795cdb5) and start prompting.
+### 👥 Seção de Especialistas
+- Fotos do **Jean (CEO)** e **Soares (CTO)**
+- Layout em moldura elegante
+- Informações profissionais e experiência
 
-Changes made via Lovable will be committed automatically to this repo.
+## 🛠️ Tecnologias Utilizadas
 
-**Use your preferred IDE**
+- **React 18** - Framework principal
+- **TypeScript** - Tipagem estática
+- **Vite** - Build tool e dev server
+- **Tailwind CSS** - Framework de estilos
+- **Shadcn/ui** - Componentes UI
+- **Lucide React** - Ícones
+- **React Router** - Navegação
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## 🚀 Como Executar
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### Pré-requisitos
+- Node.js 18+ 
+- npm ou yarn
 
-Follow these steps:
+### Instalação
+```bash
+# Clone o repositório
+git clone https://github.com/JeanGustavoMR/pacotedehoras-lp.git
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+# Entre na pasta
+cd pacotedehoras-lp
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+# Instale as dependências
+npm install
 
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Execute em modo desenvolvimento
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+### Build para Produção
+```bash
+npm run build
+```
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## 📁 Estrutura do Projeto
 
-**Use GitHub Codespaces**
+```
+src/
+├── components/
+│   ├── sections/          # Seções da landing page
+│   ├── ui/               # Componentes UI reutilizáveis
+│   ├── Navbar.tsx        # Navegação
+│   ├── Footer.tsx        # Rodapé
+│   ├── WhatsAppButton.tsx # Botão flutuante WhatsApp
+│   └── DynamicFavicon.tsx # Favicon dinâmico
+├── hooks/
+│   └── use-theme.ts      # Hook para tema claro/escuro
+├── pages/
+│   ├── Index.tsx         # Página principal
+│   └── NotFound.tsx      # Página 404
+├── assets/               # Imagens e recursos
+└── lib/                  # Utilitários
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## 🎯 Seções da Landing Page
 
-## What technologies are used for this project?
+1. **Hero Section** - Apresentação principal com especialistas
+2. **Problems Section** - Problemas que resolvemos
+3. **Value Proposition** - Nossa proposta de valor
+4. **Plans Section** - Planos de atendimento (20h, 40h, 80h/mês)
+5. **How It Works** - Como funciona nosso processo
+6. **Results Section** - Estatísticas e resultados
+7. **Final CTA** - Call-to-action final
 
-This project is built with:
+## 🌐 Deploy
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+O projeto está configurado para deploy automático via GitHub Pages.
 
-## How can I deploy this project?
+### Links de Acesso
+- **Desenvolvimento**: `http://localhost:5500/`
+- **Produção**: [GitHub Pages](https://jeangustavomr.github.io/pacotedehoras-lp/)
 
-Simply open [Lovable](https://lovable.dev/projects/4d6547ac-e8e4-40da-96ea-9c344795cdb5) and click on Share -> Publish.
+## 📞 Contato
 
-## Can I connect a custom domain to my Lovable project?
+- **WhatsApp**: [5541998243692](https://wa.me/5541998243692)
+- **Email**: [contato@consultoriatecnologia.com.br](mailto:contato@consultoriatecnologia.com.br)
 
-Yes, you can!
+## 📄 Licença
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+Este projeto é privado e de uso exclusivo da consultoria de tecnologia.
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+---
+
+**Desenvolvido com ❤️ por Jean Gustavo**
+
