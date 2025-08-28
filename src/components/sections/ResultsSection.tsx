@@ -27,27 +27,6 @@ const results = [
   }
 ];
 
-const testimonials = [
-  {
-    quote: "Depois de 3 freelancers que sumiram no meio do projeto, encontrei a previsibilidade que minha startup precisava. SLA cumprido religiosamente.",
-    author: "Carlos Silva",
-    role: "CEO, StartupTech",
-    plan: "Business (40h/mês)"
-  },
-  {
-    quote: "Conseguimos manter nosso produto estável e ainda desenvolver novas features. O custo mensal é fixo e muito abaixo do que gastaríamos com CLT.",
-    author: "Ana Costa", 
-    role: "CTO, E-commerce Plus",
-    plan: "Advanced (80h/mês)"
-  },
-  {
-    quote: "Começamos testando com 20h e em 4 meses já estávamos no plano de 80h. O dashboard me dá controle total sobre o que está sendo feito.",
-    author: "Roberto Lima",
-    role: "Founder, FinTech Pro", 
-    plan: "Escalou de StartUp para Advanced"
-  }
-];
-
 const ResultsSection = () => {
   return (
     <section id="results" className="py-20 lg:py-32 bg-gradient-hero text-white relative overflow-hidden">
@@ -94,39 +73,6 @@ const ResultsSection = () => {
               </div>
             );
           })}
-        </div>
-        
-        {/* Testimonials */}
-        <div className="mb-16">
-          <h3 className="text-2xl lg:text-3xl font-bold text-center mb-12 text-white">
-            O que nossos <span className="text-primary-glow">clientes dizem</span>
-          </h3>
-          
-          <div className="grid md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <div 
-                key={index}
-                className="p-8 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 hover:bg-white/10 transition-all duration-300 animate-slide-in"
-                style={{ animationDelay: `${index * 0.2}s` }}
-              >
-                <blockquote className="text-gray-300 mb-6 italic leading-relaxed">
-                  "{testimonial.quote}"
-                </blockquote>
-                
-                <div className="border-t border-white/10 pt-4">
-                  <div className="font-semibold text-white mb-1">
-                    {testimonial.author}
-                  </div>
-                  <div className="text-gray-400 text-sm mb-2">
-                    {testimonial.role}
-                  </div>
-                  <div className="text-primary-glow text-sm font-medium">
-                    {testimonial.plan}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
         </div>
         
         {/* Bottom CTA */}

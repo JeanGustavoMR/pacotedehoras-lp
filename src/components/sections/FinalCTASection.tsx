@@ -2,6 +2,10 @@ import { Button } from "@/components/ui/button";
 import { Calendar, Phone, ArrowRight, Clock } from "lucide-react";
 
 const FinalCTASection = () => {
+  const handleWhatsAppClick = () => {
+    window.open('https://wa.me/5541998243692?text=Vim%20através%20do%20Site%20e%20quero%20minha%20consultoria%20Gratuita.', '_blank');
+  };
+
   return (
     <section className="py-20 lg:py-32 bg-premium-dark text-white relative overflow-hidden">
       {/* Urgency Background */}
@@ -30,7 +34,12 @@ const FinalCTASection = () => {
           
           {/* Primary CTA Button */}
           <div className="mb-12">
-            <Button size="xl" variant="hero" className="text-xl px-12 py-6 shadow-glow animate-float">
+            <Button 
+              size="xl" 
+              variant="hero" 
+              className="text-xl px-12 py-6 shadow-glow animate-float"
+              onClick={handleWhatsAppClick}
+            >
               <Calendar className="w-6 h-6 mr-3" />
               Quero Garantir Minha Consultoria Gratuita
               <ArrowRight className="w-6 h-6 ml-3" />
@@ -40,7 +49,7 @@ const FinalCTASection = () => {
           {/* Question Hook */}
           <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
             <h3 className="text-2xl font-semibold mb-6 text-primary-glow">
-              "Prefere começar leve com 20h/mês para testar ou já resolver de vez seu backlog com 40h/mês?"
+              Prefere começar leve com 20h/mês para testar ou já resolver de vez seu backlog com 40h/mês?
             </h3>
             
             <div className="grid md:grid-cols-2 gap-6">
@@ -70,7 +79,12 @@ const FinalCTASection = () => {
           
           {/* Secondary Actions */}
           <div className="mt-12 flex flex-col sm:flex-row gap-6 justify-center items-center">
-            <Button variant="outline-premium" size="lg" className="bg-white/5 backdrop-blur-sm">
+            <Button 
+              variant="outline-premium" 
+              size="lg" 
+              className="bg-white/5 backdrop-blur-sm"
+              onClick={handleWhatsAppClick}
+            >
               <Phone className="w-5 h-5 mr-2" />
               Falar Direto com Especialista
             </Button>

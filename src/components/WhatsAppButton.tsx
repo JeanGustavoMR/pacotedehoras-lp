@@ -2,10 +2,7 @@ import { MessageCircle } from "lucide-react";
 
 const WhatsAppButton = () => {
   const handleWhatsAppClick = () => {
-    const phoneNumber = "5511999999999"; // Substitua pelo número correto
-    const message = "Olá! Gostaria de saber mais sobre os planos de atendimento dedicado.";
-    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-    window.open(whatsappUrl, '_blank');
+    window.open('https://wa.me/5541998243692?text=Vim%20através%20do%20Site%20e%20quero%20minha%20consultoria%20Gratuita.', '_blank');
   };
 
   return (

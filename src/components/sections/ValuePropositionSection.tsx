@@ -31,6 +31,10 @@ const ValuePropositionSection = () => {
     }
   ];
 
+  const handleWhatsAppClick = () => {
+    window.open('https://wa.me/5541998243692?text=Vim%20através%20do%20Site%20e%20quero%20minha%20consultoria%20Gratuita.', '_blank');
+  };
+
   return (
     <section id="value" className="py-20 lg:py-32 bg-premium-dark text-white relative overflow-hidden">
       {/* Background Elements */}
@@ -46,8 +50,8 @@ const ValuePropositionSection = () => {
           {/* Main Value Prop */}
           <div className="bg-gradient-accent rounded-2xl p-8 lg:p-12 shadow-premium max-w-4xl mx-auto mb-12">
             <blockquote className="text-2xl lg:text-4xl font-bold text-center">
-              "Mais barato que CLT. Mais confiável que freelancer. 
-              Mais rápido que seu time interno."
+              Mais barato que CLT. Mais confiável que freelancer. 
+              Mais rápido que seu time interno.
             </blockquote>
           </div>
           
@@ -101,7 +105,12 @@ const ValuePropositionSection = () => {
         
         {/* CTA */}
         <div className="text-center mt-16">
-          <Button size="xl" variant="hero" className="text-lg">
+          <Button 
+            size="xl" 
+            variant="hero" 
+            className="text-lg"
+            onClick={handleWhatsAppClick}
+          >
             Descobrir Qual Plano é Ideal Para Mim
           </Button>
         </div>

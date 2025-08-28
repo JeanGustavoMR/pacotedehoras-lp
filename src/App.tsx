@@ -4,9 +4,11 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
+import DynamicFavicon from "./components/DynamicFavicon";
 
 const App = () => (
   <TooltipProvider>
+    <DynamicFavicon />
     <Toaster />
     <Sonner />
     <BrowserRouter>

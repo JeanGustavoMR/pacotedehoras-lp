@@ -1,8 +1,13 @@
 import { Button } from "@/components/ui/button";
 import { Shield, Clock, TrendingUp } from "lucide-react";
-import heroImage from "@/assets/hero-tech-consulting.jpg";
+import jeanImage from "/Jean.png";
+import soaresImage from "/Soares.png";
 
 const HeroSection = () => {
+  const handleWhatsAppClick = () => {
+    window.open('https://wa.me/5541998243692?text=Vim%20através%20do%20Site%20e%20quero%20minha%20consultoria%20Gratuita.', '_blank');
+  };
+
   return (
     <section className="relative min-h-screen bg-gradient-hero text-white overflow-hidden">
       {/* Background Pattern */}
@@ -56,24 +61,73 @@ const HeroSection = () => {
             
             {/* CTA */}
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button size="xl" variant="hero" className="text-base sm:text-lg">
+              <Button 
+                size="xl" 
+                variant="hero" 
+                className="text-base sm:text-lg"
+                onClick={handleWhatsAppClick}
+              >
                 Quero Garantir Minha Consultoria Gratuita
               </Button>
-              <Button size="xl" variant="outline-premium" className="text-base sm:text-lg">
+              <Button 
+                size="xl" 
+                variant="outline-premium" 
+                className="text-base sm:text-lg"
+                onClick={handleWhatsAppClick}
+              >
                 Ver Planos
               </Button>
             </div>
           </div>
           
-          {/* Hero Image */}
+          {/* Hero Image - Fotos do Jean e Soares */}
           <div className="relative animate-slide-in">
-            <div className="relative overflow-hidden rounded-2xl shadow-premium">
-              <img 
-                src={heroImage} 
-                alt="Consultor de tecnologia trabalhando"
-                className="w-full h-auto object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+            <div className="relative overflow-hidden rounded-2xl shadow-premium bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-white/20">
+              <div className="p-6 sm:p-8">
+                <div className="grid grid-cols-2 gap-4 sm:gap-6">
+                  {/* Foto do Jean */}
+                  <div className="relative group">
+                    <div className="relative overflow-hidden rounded-xl shadow-lg transform group-hover:scale-105 transition-transform duration-300">
+                      <img 
+                        src={jeanImage} 
+                        alt="Jean - CEO"
+                        className="w-full h-48 sm:h-56 object-cover object-top"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                      <div className="absolute bottom-3 left-3 text-white">
+                        <h3 className="font-bold text-sm sm:text-base">Jean</h3>
+                        <p className="text-xs sm:text-sm opacity-90">CEO</p>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Foto do Soares */}
+                  <div className="relative group">
+                    <div className="relative overflow-hidden rounded-xl shadow-lg transform group-hover:scale-105 transition-transform duration-300">
+                      <img 
+                        src={soaresImage} 
+                        alt="Soares - CTO"
+                        className="w-full h-48 sm:h-56 object-cover object-top"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                      <div className="absolute bottom-3 left-3 text-white">
+                        <h3 className="font-bold text-sm sm:text-base">Soares</h3>
+                        <p className="text-xs sm:text-sm opacity-90">CTO</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Texto central */}
+                <div className="mt-6 text-center">
+                  <p className="text-white/90 text-sm sm:text-base font-medium">
+                    Especialistas em Tecnologia
+                  </p>
+                  <p className="text-primary-glow text-xs sm:text-sm mt-1">
+                    +8 anos de experiência
+                  </p>
+                </div>
+              </div>
             </div>
             
             {/* Floating Stats */}

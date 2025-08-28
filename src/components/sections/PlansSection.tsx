@@ -61,6 +61,10 @@ const plans = [
 ];
 
 const PlansSection = () => {
+  const handleWhatsAppClick = () => {
+    window.open('https://wa.me/5541998243692?text=Vim%20através%20do%20Site%20e%20quero%20minha%20consultoria%20Gratuita.', '_blank');
+  };
+
   return (
     <section id="plans" className="py-20 lg:py-32 bg-gradient-card">
       <div className="container mx-auto px-4">
@@ -130,6 +134,7 @@ const PlansSection = () => {
                   size="lg" 
                   variant={plan.popular ? "hero" : "outline-premium"}
                   className="w-full"
+                  onClick={handleWhatsAppClick}
                 >
                   {plan.popular ? "Escolher Business" : `Escolher ${plan.name}`}
                 </Button>
