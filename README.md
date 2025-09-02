@@ -1,8 +1,16 @@
 # 🚀 Pacote de Horas - Landing Page
 
-Landing page moderna para consultoria de tecnologia com sistema de planos de atendimento dedicado.
+Landing page moderna para consultoria de tecnologia com sistema de planos de atendimento dedicado e internacionalização completa.
 
 ## ✨ Funcionalidades
+
+### 🌍 Sistema de Internacionalização (i18n)
+- **Detecção automática** por IP e idioma do navegador
+- **Português (pt-BR)** para usuários brasileiros
+- **Inglês (en-US)** para usuários internacionais
+- **Botão de troca manual** na navbar
+- **Persistência** da preferência no localStorage
+- **Preços em moeda local**: R$ para Brasil, $ para outros países (mesmo valor numérico)
 
 ### 🎨 Sistema de Tema Claro/Escuro
 - **Detecção automática** da preferência do sistema
@@ -14,16 +22,22 @@ Landing page moderna para consultoria de tecnologia com sistema de planos de ate
 - Layout adaptável para desktop, tablet e mobile
 - Componentes otimizados para diferentes tamanhos de tela
 - Animações suaves e efeitos visuais modernos
+- **Textos otimizados** para inglês com melhor espaçamento
 
 ### 💬 Integração WhatsApp
 - Todos os botões CTA conectados ao WhatsApp
-- Link padronizado: `https://wa.me/5541998243692`
-- Mensagem automática para consultoria gratuita
+- **Números diferentes por região**: Brasil e Internacional
+- **Mensagens automáticas** em português e inglês
+- Consultoria gratuita para ambos os idiomas
 
 ### 👥 Seção de Especialistas
 - Fotos do **Jean (CEO)** e **Soares (CTO)**
-- Layout em moldura elegante
+- Layout em moldura elegante responsiva
 - Informações profissionais e experiência
+
+### 📊 Google Tag Manager
+- **GTM integrado** para analytics e tracking
+- Código otimizado no `<head>` e `<body>`
 
 ## 🛠️ Tecnologias Utilizadas
 
@@ -68,12 +82,18 @@ src/
 ├── components/
 │   ├── sections/          # Seções da landing page
 │   ├── ui/               # Componentes UI reutilizáveis
-│   ├── Navbar.tsx        # Navegação
-│   ├── Footer.tsx        # Rodapé
+│   ├── Navbar.tsx        # Navegação com seletor de idioma
+│   ├── Footer.tsx        # Rodapé internacionalizado
+│   ├── LanguageToggle.tsx # Seletor de idioma
 │   ├── WhatsAppButton.tsx # Botão flutuante WhatsApp
 │   └── DynamicFavicon.tsx # Favicon dinâmico
+├── contexts/
+│   └── LocaleContext.tsx # Contexto para internacionalização
 ├── hooks/
+│   ├── use-locale.ts     # Hook para gerenciamento de idioma
 │   └── use-theme.ts      # Hook para tema claro/escuro
+├── translations/
+│   └── index.ts          # Todas as traduções centralizadas
 ├── pages/
 │   ├── Index.tsx         # Página principal
 │   └── NotFound.tsx      # Página 404

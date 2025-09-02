@@ -138,64 +138,66 @@ const PlansSection = () => {
   return (
     <section id="plans" className="py-20 lg:py-32 bg-gradient-card">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-2xl sm:text-3xl lg:text-5xl font-bold mb-6 text-foreground">
+        <div className="text-center mb-12 sm:mb-16">
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-4 sm:mb-6 text-foreground leading-tight">
             {getTranslation('plansTitle', currentLocale)} <span className="text-primary">{getTranslation('plansTitleHighlight', currentLocale)}</span>
           </h2>
-          <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
+          <p className="text-sm sm:text-base lg:text-lg xl:text-xl text-muted-foreground max-w-3xl mx-auto mb-6 sm:mb-8 leading-relaxed">
             {getTranslation('plansSubtitle', currentLocale)}
           </p>
           
-          <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-6 py-3 rounded-full font-medium">
-            <Star className="w-5 h-5" />
-            {getTranslation('slaText', currentLocale)}
+          <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 sm:px-6 py-2 sm:py-3 rounded-full font-medium">
+            <Star className="w-4 h-4 sm:w-5 sm:h-5" />
+            <span className="text-sm sm:text-base">
+              {getTranslation('slaText', currentLocale)}
+            </span>
           </div>
         </div>
         
-        <div className="grid lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+        <div className="grid lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 max-w-7xl mx-auto">
           {plansData.map((plan, index) => {
             const Icon = plan.icon;
             return (
               <div 
                 key={index}
-                className={`relative p-8 bg-card rounded-2xl border-2 ${plan.color} hover:shadow-premium transition-all duration-300 hover:-translate-y-2 animate-fade-in`}
+                className={`relative p-4 sm:p-6 lg:p-8 bg-card rounded-2xl border-2 ${plan.color} hover:shadow-premium transition-all duration-300 hover:-translate-y-2 animate-fade-in`}
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 {plan.popular && (
-                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                    <div className="bg-gradient-accent text-white px-6 py-2 rounded-full text-sm font-semibold shadow-premium">
+                  <div className="absolute -top-3 sm:-top-4 left-1/2 transform -translate-x-1/2">
+                    <div className="bg-gradient-accent text-white px-4 sm:px-6 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-semibold shadow-premium">
                       {getTranslation('popular', currentLocale)}
                     </div>
                   </div>
                 )}
                 
-                <div className="text-center mb-8">
-                  <div className="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-4">
-                    <Icon className="w-8 h-8 text-primary" />
+                <div className="text-center mb-6 sm:mb-8">
+                  <div className="w-12 h-12 sm:w-16 sm:h-16 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-3 sm:mb-4">
+                    <Icon className="w-6 h-6 sm:w-8 sm:h-8 text-primary" />
                   </div>
                   
-                  <h3 className="text-2xl font-bold text-card-foreground mb-2">
+                  <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-card-foreground mb-2 leading-tight">
                     {plan.name[currentLocale]}
                   </h3>
                   
-                  <div className="text-4xl font-bold text-primary mb-2">
+                  <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary mb-2">
                     {formatPrice(plan.priceInBRL)}
                   </div>
                   
-                  <div className="text-lg font-medium text-primary-glow mb-2">
+                  <div className="text-sm sm:text-base lg:text-lg font-medium text-primary-glow mb-2">
                     {plan.hours[currentLocale]}
                   </div>
                   
-                  <p className="text-muted-foreground">
+                  <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
                     {plan.description[currentLocale]}
                   </p>
                 </div>
                 
-                <ul className="space-y-4 mb-8">
+                <ul className="space-y-3 sm:space-y-4 mb-6 sm:mb-8">
                   {plan.features[currentLocale].map((feature, featureIndex) => (
-                    <li key={featureIndex} className="flex items-start gap-3">
-                      <Check className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                      <span className="text-card-foreground text-sm">{feature}</span>
+                    <li key={featureIndex} className="flex items-start gap-2 sm:gap-3">
+                      <Check className="w-4 h-4 sm:w-5 sm:h-5 text-primary mt-0.5 flex-shrink-0" />
+                      <span className="text-card-foreground text-xs sm:text-sm leading-relaxed">{feature}</span>
                     </li>
                   ))}
                 </ul>
@@ -203,10 +205,12 @@ const PlansSection = () => {
                 <Button 
                   size="lg" 
                   variant={plan.popular ? "hero" : "outline-premium"}
-                  className="w-full"
+                  className="w-full text-sm sm:text-base"
                   onClick={handleWhatsAppClick}
                 >
-                  {plan.popular ? `${getTranslation('choose', currentLocale)} Business` : `${getTranslation('choose', currentLocale)} ${plan.name[currentLocale]}`}
+                  <span className="whitespace-normal sm:whitespace-nowrap">
+                    {plan.popular ? `${getTranslation('choose', currentLocale)} Business` : `${getTranslation('choose', currentLocale)} ${plan.name[currentLocale]}`}
+                  </span>
                 </Button>
               </div>
             );
@@ -214,9 +218,9 @@ const PlansSection = () => {
         </div>
         
         {/* Bottom Note */}
-        <div className="text-center mt-16">
-          <div className="bg-yellow-50 border border-yellow-200 rounded-xl p-6 max-w-2xl mx-auto">
-            <p className="text-yellow-800 font-medium">
+        <div className="text-center mt-12 sm:mt-16">
+          <div className="bg-yellow-50 border border-yellow-200 rounded-xl p-4 sm:p-6 max-w-2xl mx-auto">
+            <p className="text-yellow-800 font-medium text-sm sm:text-base leading-relaxed">
               <strong>{getTranslation('flexibility', currentLocale)}</strong> {getTranslation('flexibilityText', currentLocale)}
             </p>
           </div>
