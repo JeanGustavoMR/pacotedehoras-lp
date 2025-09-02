@@ -1,9 +1,17 @@
 import { Button } from "@/components/ui/button";
 import { Calendar, Phone, ArrowRight, Clock } from "lucide-react";
+import { useLocaleContext } from "@/contexts/LocaleContext";
+import { getTranslation } from "@/translations";
 
 const FinalCTASection = () => {
+  const { currentLocale, isBrazilian } = useLocaleContext();
+
   const handleWhatsAppClick = () => {
-    window.open('https://wa.me/5541998243692?text=Vim%20através%20do%20Site%20e%20quero%20minha%20consultoria%20Gratuita.', '_blank');
+    const phone = isBrazilian ? '5541998243692' : '15551234567';
+    const message = isBrazilian 
+      ? 'Vim%20através%20do%20Site%20e%20quero%20minha%20consultoria%20Gratuita.'
+      : 'I%20came%20through%20the%20website%20and%20want%20my%20free%20consultation.';
+    window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
   };
 
   return (
@@ -18,18 +26,20 @@ const FinalCTASection = () => {
             <div className="flex items-center justify-center gap-2 text-yellow-300">
               <Clock className="w-5 h-5" />
               <span className="font-semibold">
-                As horas são limitadas por mês. Reserve agora para não ficar sem SLA este mês.
+                {getTranslation('finalCTAUrgency', currentLocale)}
               </span>
             </div>
           </div>
           
           {/* Main CTA */}
           <h2 className="text-2xl sm:text-3xl lg:text-5xl font-bold mb-8">
-            Agende agora sua call de <span className="text-primary-glow">15 minutos</span> com um especialista
+            {getTranslation('finalCTATitle', currentLocale).split('15 minutos')[0]}
+            <span className="text-primary-glow">15 minutos</span>
+            {getTranslation('finalCTATitle', currentLocale).split('15 minutos')[1]}
           </h2>
           
           <p className="text-lg sm:text-xl text-gray-300 mb-8">
-            e escolha o plano certo para sua necessidade
+            {getTranslation('finalCTASubtitle', currentLocale)}
           </p>
           
           {/* Primary CTA Button */}
@@ -41,7 +51,7 @@ const FinalCTASection = () => {
               onClick={handleWhatsAppClick}
             >
               <Calendar className="w-6 h-6 mr-3" />
-              Quero Garantir Minha Consultoria Gratuita
+              {getTranslation('finalCTAMainButton', currentLocale)}
               <ArrowRight className="w-6 h-6 ml-3" />
             </Button>
           </div>
@@ -49,29 +59,27 @@ const FinalCTASection = () => {
           {/* Question Hook */}
           <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
             <h3 className="text-2xl font-semibold mb-6 text-primary-glow">
-              Prefere começar leve com 20h/mês para testar ou já resolver de vez seu backlog com 40h/mês?
+              {getTranslation('finalCTAQuestion', currentLocale)}
             </h3>
             
             <div className="grid md:grid-cols-2 gap-6">
               {/* Option 1 */}
               <div className="p-6 bg-white/5 rounded-xl hover:bg-white/10 transition-all duration-300 cursor-pointer group">
                 <h4 className="font-semibold text-lg mb-3 group-hover:text-primary-glow transition-colors">
-                  Começar Testando (20h/mês)
+                  {getTranslation('finalCTAOption1Title', currentLocale)}
                 </h4>
                 <p className="text-gray-300 text-sm">
-                  Ideal para validar nosso modelo sem grandes investimentos. 
-                  Perfeito para pequenos ajustes e bugs pontuais.
+                  {getTranslation('finalCTAOption1Description', currentLocale)}
                 </p>
               </div>
               
               {/* Option 2 */}
               <div className="p-6 bg-primary/10 border border-primary/20 rounded-xl hover:bg-primary/15 transition-all duration-300 cursor-pointer group">
                 <h4 className="font-semibold text-lg mb-3 text-primary-glow group-hover:text-white transition-colors">
-                  Resolver de Vez (40h/mês)
+                  {getTranslation('finalCTAOption2Title', currentLocale)}
                 </h4>
                 <p className="text-gray-300 text-sm">
-                  Para quem tem backlog acumulado e quer ver resultados rápidos. 
-                  Desenvolvimento consistente e melhorias constantes.
+                  {getTranslation('finalCTAOption2Description', currentLocale)}
                 </p>
               </div>
             </div>
@@ -86,11 +94,11 @@ const FinalCTASection = () => {
               onClick={handleWhatsAppClick}
             >
               <Phone className="w-5 h-5 mr-2" />
-              Falar Direto com Especialista
+              {getTranslation('finalCTASecondaryButton', currentLocale)}
             </Button>
             
             <div className="text-gray-400 text-sm">
-              Resposta em até 2 horas úteis
+              {getTranslation('finalCTAResponse', currentLocale)}
             </div>
           </div>
           
@@ -98,7 +106,7 @@ const FinalCTASection = () => {
           <div className="mt-16 text-center">
             <div className="inline-flex items-center gap-2 bg-green-500/20 border border-green-500/30 text-green-300 px-6 py-3 rounded-full">
               <span className="font-medium">
-                Consultoria 100% gratuita - sem compromisso
+                {getTranslation('finalCTAGuarantee', currentLocale)}
               </span>
             </div>
           </div>

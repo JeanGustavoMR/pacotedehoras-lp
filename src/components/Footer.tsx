@@ -1,8 +1,12 @@
 import { Button } from "@/components/ui/button";
 import { Phone, Mail, MapPin, Clock, Shield, TrendingUp } from "lucide-react";
 import logo from "@/assets/logo.png";
+import { useLocaleContext } from "@/contexts/LocaleContext";
+import { getTranslation } from "@/translations";
 
 const Footer = () => {
+  const { currentLocale, isBrazilian } = useLocaleContext();
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -25,23 +29,22 @@ const Footer = () => {
               </span>
             </div>
             <p className="text-gray-300 mb-6 max-w-md">
-              Seu seguro de tecnologia com pacote de horas e SLA garantido. 
-              Flexibilidade, previsibilidade e resposta rápida para manter seu produto sempre no ar.
+              {getTranslation('footerDescription', currentLocale)}
             </p>
             
             {/* Key Benefits */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
               <div className="flex items-center gap-2 text-sm">
                 <Clock className="w-4 h-4 text-primary-glow" />
-                <span>SLA 24h úteis</span>
+                <span>{getTranslation('sla24h', currentLocale)}</span>
               </div>
               <div className="flex items-center gap-2 text-sm">
                 <TrendingUp className="w-4 h-4 text-primary-glow" />
-                <span>40% menos custos</span>
+                <span>{getTranslation('cost40', currentLocale)}</span>
               </div>
               <div className="flex items-center gap-2 text-sm">
                 <Shield className="w-4 h-4 text-primary-glow" />
-                <span>Capacidade garantida</span>
+                <span>{getTranslation('guaranteedCapacity', currentLocale)}</span>
               </div>
             </div>
 
@@ -50,14 +53,14 @@ const Footer = () => {
               size="lg"
               className="bg-primary hover:bg-primary/90"
             >
-              Consultoria Gratuita
+              {getTranslation('freeConsultation', currentLocale)}
             </Button>
           </div>
 
           {/* Quick Links */}
           <div>
             <h3 className="text-lg font-semibold mb-6 text-primary-glow">
-              Navegação
+              {getTranslation('navigation', currentLocale)}
             </h3>
             <ul className="space-y-3">
               <li>
@@ -65,7 +68,7 @@ const Footer = () => {
                   onClick={() => document.getElementById('problems')?.scrollIntoView({ behavior: 'smooth' })}
                   className="text-gray-300 hover:text-white transition-colors"
                 >
-                  Problemas
+                  {getTranslation('problems', currentLocale)}
                 </button>
               </li>
               <li>
@@ -73,7 +76,7 @@ const Footer = () => {
                   onClick={() => document.getElementById('value')?.scrollIntoView({ behavior: 'smooth' })}
                   className="text-gray-300 hover:text-white transition-colors"
                 >
-                  Solução
+                  {getTranslation('solution', currentLocale)}
                 </button>
               </li>
               <li>
@@ -81,7 +84,7 @@ const Footer = () => {
                   onClick={() => document.getElementById('plans')?.scrollIntoView({ behavior: 'smooth' })}
                   className="text-gray-300 hover:text-white transition-colors"
                 >
-                  Planos
+                  {getTranslation('plans', currentLocale)}
                 </button>
               </li>
               <li>
@@ -89,7 +92,7 @@ const Footer = () => {
                   onClick={() => document.getElementById('how-it-works')?.scrollIntoView({ behavior: 'smooth' })}
                   className="text-gray-300 hover:text-white transition-colors"
                 >
-                  Como Funciona
+                  {getTranslation('howItWorks', currentLocale)}
                 </button>
               </li>
               <li>
@@ -97,7 +100,7 @@ const Footer = () => {
                   onClick={() => document.getElementById('results')?.scrollIntoView({ behavior: 'smooth' })}
                   className="text-gray-300 hover:text-white transition-colors"
                 >
-                  Resultados
+                  {getTranslation('results', currentLocale)}
                 </button>
               </li>
             </ul>
@@ -106,13 +109,13 @@ const Footer = () => {
           {/* Contact Info */}
           <div>
             <h3 className="text-lg font-semibold mb-6 text-primary-glow">
-              Contato
+              {getTranslation('contact', currentLocale)}
             </h3>
             <div className="space-y-4">
               <div className="flex items-start gap-3">
                 <Phone className="w-5 h-5 text-primary-glow mt-0.5 flex-shrink-0" />
                 <div>
-                  <p className="font-medium">Telefone</p>
+                  <p className="font-medium">{getTranslation('phone', currentLocale)}</p>
                   <p className="text-gray-300 text-sm">(11) 99999-9999</p>
                 </div>
               </div>
@@ -120,7 +123,7 @@ const Footer = () => {
               <div className="flex items-start gap-3">
                 <Mail className="w-5 h-5 text-primary-glow mt-0.5 flex-shrink-0" />
                 <div>
-                  <p className="font-medium">Email</p>
+                  <p className="font-medium">{getTranslation('email', currentLocale)}</p>
                   <p className="text-gray-300 text-sm">contato@techhours.com.br</p>
                 </div>
               </div>
@@ -128,7 +131,7 @@ const Footer = () => {
               <div className="flex items-start gap-3">
                 <Clock className="w-5 h-5 text-primary-glow mt-0.5 flex-shrink-0" />
                 <div>
-                  <p className="font-medium">Horário</p>
+                  <p className="font-medium">{getTranslation('schedule', currentLocale)}</p>
                   <p className="text-gray-300 text-sm">Seg-Sex: 9h às 18h</p>
                 </div>
               </div>
@@ -136,7 +139,7 @@ const Footer = () => {
               <div className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-primary-glow mt-0.5 flex-shrink-0" />
                 <div>
-                  <p className="font-medium">Localização</p>
+                  <p className="font-medium">{getTranslation('location', currentLocale)}</p>
                   <p className="text-gray-300 text-sm">São Paulo, SP - Brasil</p>
                 </div>
               </div>
@@ -150,7 +153,7 @@ const Footer = () => {
         <div className="container mx-auto px-4 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="text-gray-400 text-sm">
-              © 2024 TechHours. Todos os direitos reservados.
+              © 2024 TechHours. {getTranslation('footerRights', currentLocale)}.
             </div>
             
             <div className="flex items-center gap-6 text-sm">
@@ -158,19 +161,19 @@ const Footer = () => {
                 onClick={() => document.getElementById('privacy')?.scrollIntoView({ behavior: 'smooth' })}
                 className="text-gray-400 hover:text-white transition-colors"
               >
-                Política de Privacidade
+                {getTranslation('privacyPolicy', currentLocale)}
               </button>
               <button 
                 onClick={() => document.getElementById('terms')?.scrollIntoView({ behavior: 'smooth' })}
                 className="text-gray-400 hover:text-white transition-colors"
               >
-                Termos de Uso
+                {getTranslation('termsOfUse', currentLocale)}
               </button>
               <button 
                 onClick={scrollToTop}
                 className="text-gray-400 hover:text-white transition-colors"
               >
-                Voltar ao Topo
+                {getTranslation('backToTop', currentLocale)}
               </button>
             </div>
           </div>

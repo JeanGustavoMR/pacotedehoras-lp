@@ -1,33 +1,37 @@
 import { TrendingUp, Clock, Users, Award } from "lucide-react";
+import { useLocaleContext } from "@/contexts/LocaleContext";
+import { getTranslation } from "@/translations";
 
-const results = [
+const resultsData = [
   {
     icon: TrendingUp,
     stat: "40%",
-    label: "menos custos vs. contratação fixa",
-    description: "Economia comprovada em relação a CLT tradicional"
+    labelKey: 'result1Label',
+    descriptionKey: 'result1Description'
   },
   {
     icon: Clock,
     stat: "24h",
-    label: "úteis para bugs críticos",
-    description: "SLA garantido para situações emergenciais"
+    labelKey: 'result2Label',
+    descriptionKey: 'result2Description'
   },
   {
     icon: Users,
     stat: "20h → 80h+",
-    label: "clientes que escalam em 6 meses",
-    description: "Crescimento orgânico conforme necessidade"
+    labelKey: 'result3Label',
+    descriptionKey: 'result3Description'
   },
   {
     icon: Award,
     stat: "80%",
-    label: "de retenção em 12 meses",
-    description: "Modelo previsível e 'sticky' que funciona"
+    labelKey: 'result4Label',
+    descriptionKey: 'result4Description'
   }
 ];
 
 const ResultsSection = () => {
+  const { currentLocale } = useLocaleContext();
+
   return (
     <section id="results" className="py-20 lg:py-32 bg-gradient-hero text-white relative overflow-hidden">
       {/* Background Pattern */}
@@ -38,16 +42,17 @@ const ResultsSection = () => {
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-2xl sm:text-3xl lg:text-5xl font-bold mb-6">
-            Resultados que <span className="text-primary-glow">Entregamos</span>
+            {getTranslation('resultsTitle', currentLocale).split('Entregamos')[0]}
+            <span className="text-primary-glow">{getTranslation('resultsTitle', currentLocale).includes('Entregamos') ? 'Entregamos' : 'Deliver'}</span>
           </h2>
           <p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto">
-            Números reais de clientes que transformaram sua operação de tecnologia
+            {getTranslation('resultsSubtitle', currentLocale)}
           </p>
         </div>
         
         {/* Stats Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
-          {results.map((result, index) => {
+          {resultsData.map((result, index) => {
             const Icon = result.icon;
             return (
               <div 
@@ -64,11 +69,11 @@ const ResultsSection = () => {
                 </div>
                 
                 <div className="text-lg font-semibold mb-3 text-white">
-                  {result.label}
+                  {getTranslation(result.labelKey, currentLocale)}
                 </div>
                 
                 <p className="text-gray-300 text-sm">
-                  {result.description}
+                  {getTranslation(result.descriptionKey, currentLocale)}
                 </p>
               </div>
             );
@@ -79,14 +84,14 @@ const ResultsSection = () => {
         <div className="text-center">
           <div className="bg-primary/20 border border-primary/30 rounded-2xl p-8 max-w-2xl mx-auto">
             <h3 className="text-2xl font-bold mb-4 text-white">
-              Faça parte desses resultados
+              {getTranslation('resultsCTATitle', currentLocale)}
             </h3>
             <p className="text-gray-300 mb-6">
-              Junte-se a centenas de empresas que já transformaram sua operação de tecnologia
+              {getTranslation('resultsCTADescription', currentLocale)}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <div className="text-primary-glow font-semibold">
-                As horas são limitadas por mês
+                {getTranslation('resultsCTANote', currentLocale)}
               </div>
             </div>
           </div>

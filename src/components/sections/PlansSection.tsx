@@ -1,68 +1,138 @@
 import { Button } from "@/components/ui/button";
 import { Check, Star, Zap, Crown } from "lucide-react";
+import { useLocaleContext } from "@/contexts/LocaleContext";
+import { getTranslation } from "@/translations";
 
-const plans = [
+const plansData = [
   {
-    name: "StartUp",
-    hours: "20h/mês",
-    price: "R$ 2.990",
-    description: "Ideal para testar nosso modelo",
+    name: {
+      'pt-BR': "StartUp",
+      'en-US': "StartUp"
+    },
+    hours: {
+      'pt-BR': "20h/mês",
+      'en-US': "20h/month"
+    },
+    priceInBRL: 2990,
+    description: {
+      'pt-BR': "Ideal para testar nosso modelo",
+      'en-US': "Ideal for testing our model"
+    },
     icon: Zap,
-    features: [
-      "Analista/Desenvolvedor",
-      "Entrega técnica do produto",
-      "Traduz as necessidades em software funcionando",
-      "Construindo e evoluindo o produto",
-      "1 relatório mensal (Resumo de Entregas do Mês)",
-      "1 reunião mensal de 1h com Ata, Plano de Ação e Registro de Decisões Técnicas"
-    ],
+    features: {
+      'pt-BR': [
+        "Analista/Desenvolvedor",
+        "Entrega técnica do produto",
+        "Traduz as necessidades em software funcionando",
+        "Construindo e evoluindo o produto",
+        "1 relatório mensal (Resumo de Entregas do Mês)",
+        "1 reunião mensal de 1h com Ata, Plano de Ação e Registro de Decisões Técnicas"
+      ],
+      'en-US': [
+        "Analyst/Developer",
+        "Technical product delivery",
+        "Translates needs into working software",
+        "Building and evolving the product",
+        "1 monthly report (Monthly Deliveries Summary)",
+        "1 monthly 1h meeting with Minutes, Action Plan and Technical Decisions Record"
+      ]
+    },
     popular: false,
     color: "border-border"
   },
   {
-    name: "Business",
-    hours: "40h/mês", 
-    price: "R$ 5.180",
-    description: "Para backlog constante",
+    name: {
+      'pt-BR': "Business",
+      'en-US': "Business"
+    },
+    hours: {
+      'pt-BR': "40h/mês",
+      'en-US': "40h/month"
+    },
+    priceInBRL: 5180,
+    description: {
+      'pt-BR': "Para backlog constante",
+      'en-US': "For constant backlog"
+    },
     icon: Star,
-    features: [
-      "Analista/Desenvolvedor",
-      "Entrega técnica do produto",
-      "Traduz as necessidades em software funcionando",
-      "Construindo e evoluindo o produto",
-      "1 relatório mensal (Resumo de Entregas do Mês)",
-      "1 reunião mensal de 1h com Ata, Plano de Ação e Registro de Decisões Técnicas",
-      "QA/DevOps/UX-UI: Qualidade, operação e experiência do usuário",
-      "Garantem que o produto seja confiável, fácil de usar e esteja sempre disponível em produção"
-    ],
+    features: {
+      'pt-BR': [
+        "Analista/Desenvolvedor",
+        "Entrega técnica do produto",
+        "Traduz as necessidades em software funcionando",
+        "Construindo e evoluindo o produto",
+        "1 relatório mensal (Resumo de Entregas do Mês)",
+        "1 reunião mensal de 1h com Ata, Plano de Ação e Registro de Decisões Técnicas",
+        "QA/DevOps/UX-UI: Qualidade, operação e experiência do usuário",
+        "Garantem que o produto seja confiável, fácil de usar e esteja sempre disponível em produção"
+      ],
+      'en-US': [
+        "Analyst/Developer",
+        "Technical product delivery",
+        "Translates needs into working software",
+        "Building and evolving the product",
+        "1 monthly report (Monthly Deliveries Summary)",
+        "1 monthly 1h meeting with Minutes, Action Plan and Technical Decisions Record",
+        "QA/DevOps/UX-UI: Quality, operation and user experience",
+        "Ensures the product is reliable, easy to use and always available in production"
+      ]
+    },
     popular: true,
     color: "border-primary shadow-glow"
   },
   {
-    name: "Advanced",
-    hours: "80h/mês",
-    price: "R$ 9.600", 
-    description: "Para operações críticas",
+    name: {
+      'pt-BR': "Advanced",
+      'en-US': "Advanced"
+    },
+    hours: {
+      'pt-BR': "80h/mês",
+      'en-US': "80h/month"
+    },
+    priceInBRL: 9600,
+    description: {
+      'pt-BR': "Para operações críticas",
+      'en-US': "For critical operations"
+    },
     icon: Crown,
-    features: [
-      "2 relatórios mensais (Tarefas Concluídas e em Andamento, Resumo de Entregas, Evolução do Roadmap)",
-      "2 reuniões mensais de 1h (Ata, Decisões Técnicas, Atualização de Cronograma)",
-      "Analista/Desenvolvedor: Entrega técnica do produto",
-      "Traduz as necessidades em software funcionando, construindo e evoluindo o produto",
-      "QA/DevOps/UX-UI: Qualidade, operação e experiência do usuário",
-      "Garantem que o produto seja confiável, fácil de usar e esteja sempre disponível em produção",
-      "Scrum Master/Product Owner: Direciona valor e priorização",
-      "Faz o time trabalhar de forma ágil e sem bloqueios, mantendo foco e organização",
-      "Define prioridades e direciona o que gera mais valor para o negócio"
-    ],
+    features: {
+      'pt-BR': [
+        "2 relatórios mensais (Tarefas Concluídas e em Andamento, Resumo de Entregas, Evolução do Roadmap)",
+        "2 reuniões mensais de 1h (Ata, Decisões Técnicas, Atualização de Cronograma)",
+        "Analista/Desenvolvedor: Entrega técnica do produto",
+        "Traduz as necessidades em software funcionando, construindo e evoluindo o produto",
+        "QA/DevOps/UX-UI: Qualidade, operação e experiência do usuário",
+        "Garantem que o produto seja confiável, fácil de usar e esteja sempre disponível em produção",
+        "Scrum Master/Product Owner: Direciona valor e priorização",
+        "Faz o time trabalhar de forma ágil e sem bloqueios, mantendo foco e organização",
+        "Define prioridades e direciona o que gera mais valor para o negócio"
+      ],
+      'en-US': [
+        "2 monthly reports (Completed and In Progress Tasks, Deliveries Summary, Roadmap Evolution)",
+        "2 monthly 1h meetings (Minutes, Technical Decisions, Schedule Update)",
+        "Analyst/Developer: Technical product delivery",
+        "Translates needs into working software, building and evolving the product",
+        "QA/DevOps/UX-UI: Quality, operation and user experience",
+        "Ensures the product is reliable, easy to use and always available in production",
+        "Scrum Master/Product Owner: Directs value and prioritization",
+        "Makes the team work agile and without blockers, maintaining focus and organization",
+        "Defines priorities and directs what generates more value for the business"
+      ]
+    },
     popular: false,
     color: "border-primary-glow"
   }
 ];
 
 const PlansSection = () => {
+  const { currentLocale, formatPrice, isBrazilian } = useLocaleContext();
+
   const handleWhatsAppClick = () => {
-    window.open('https://wa.me/5541998243692?text=Vim%20através%20do%20Site%20e%20quero%20minha%20consultoria%20Gratuita.', '_blank');
+    const phone = isBrazilian ? '5541998243692' : '15551234567'; // Número americano fictício
+    const message = isBrazilian 
+      ? 'Vim%20através%20do%20Site%20e%20quero%20minha%20consultoria%20Gratuita.'
+      : 'I%20came%20through%20the%20website%20and%20want%20my%20free%20consultation.';
+    window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
   };
 
   return (
@@ -70,20 +140,20 @@ const PlansSection = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-2xl sm:text-3xl lg:text-5xl font-bold mb-6 text-foreground">
-            Planos de Atendimento <span className="text-primary">Dedicado</span>
+            {getTranslation('plansTitle', currentLocale)} <span className="text-primary">{getTranslation('plansTitleHighlight', currentLocale)}</span>
           </h2>
           <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
-            Escolha o plano ideal para sua necessidade. Flexibilidade total: upgrade/downgrade mensal + hora extra com tarifa fixa.
+            {getTranslation('plansSubtitle', currentLocale)}
           </p>
           
           <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-6 py-3 rounded-full font-medium">
             <Star className="w-5 h-5" />
-            Todos os planos incluem garantia de SLA
+            {getTranslation('slaText', currentLocale)}
           </div>
         </div>
         
         <div className="grid lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-          {plans.map((plan, index) => {
+          {plansData.map((plan, index) => {
             const Icon = plan.icon;
             return (
               <div 
@@ -94,7 +164,7 @@ const PlansSection = () => {
                 {plan.popular && (
                   <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
                     <div className="bg-gradient-accent text-white px-6 py-2 rounded-full text-sm font-semibold shadow-premium">
-                      Mais Popular
+                      {getTranslation('popular', currentLocale)}
                     </div>
                   </div>
                 )}
@@ -105,24 +175,24 @@ const PlansSection = () => {
                   </div>
                   
                   <h3 className="text-2xl font-bold text-card-foreground mb-2">
-                    {plan.name}
+                    {plan.name[currentLocale]}
                   </h3>
                   
                   <div className="text-4xl font-bold text-primary mb-2">
-                    {plan.price}
+                    {formatPrice(plan.priceInBRL)}
                   </div>
                   
                   <div className="text-lg font-medium text-primary-glow mb-2">
-                    {plan.hours}
+                    {plan.hours[currentLocale]}
                   </div>
                   
                   <p className="text-muted-foreground">
-                    {plan.description}
+                    {plan.description[currentLocale]}
                   </p>
                 </div>
                 
                 <ul className="space-y-4 mb-8">
-                  {plan.features.map((feature, featureIndex) => (
+                  {plan.features[currentLocale].map((feature, featureIndex) => (
                     <li key={featureIndex} className="flex items-start gap-3">
                       <Check className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
                       <span className="text-card-foreground text-sm">{feature}</span>
@@ -136,7 +206,7 @@ const PlansSection = () => {
                   className="w-full"
                   onClick={handleWhatsAppClick}
                 >
-                  {plan.popular ? "Escolher Business" : `Escolher ${plan.name}`}
+                  {plan.popular ? `${getTranslation('choose', currentLocale)} Business` : `${getTranslation('choose', currentLocale)} ${plan.name[currentLocale]}`}
                 </Button>
               </div>
             );
@@ -147,8 +217,7 @@ const PlansSection = () => {
         <div className="text-center mt-16">
           <div className="bg-yellow-50 border border-yellow-200 rounded-xl p-6 max-w-2xl mx-auto">
             <p className="text-yellow-800 font-medium">
-              <strong>Flexibilidade total:</strong> Upgrade/downgrade mensal sem burocracias. 
-              Horas extras disponíveis com tarifa fixa transparente.
+              <strong>{getTranslation('flexibility', currentLocale)}</strong> {getTranslation('flexibilityText', currentLocale)}
             </p>
           </div>
         </div>

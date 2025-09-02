@@ -1,53 +1,58 @@
 import { Calendar, Ticket, Code, BarChart } from "lucide-react";
+import { useLocaleContext } from "@/contexts/LocaleContext";
+import { getTranslation } from "@/translations";
 
-const steps = [
+const stepsData = [
   {
     number: "1",
     icon: Calendar,
-    title: "Reserva de horas",
-    subtitle: "capacidade garantida",
-    description: "Escolha seu plano e garanta horas mensais dedicadas exclusivamente ao seu projeto. Sem surpresas, sem filas de espera."
+    titleKey: 'step1Title',
+    subtitleKey: 'step1Subtitle',
+    descriptionKey: 'step1Description'
   },
   {
     number: "2", 
     icon: Ticket,
-    title: "Abertura de tickets",
-    subtitle: "SLA até 24h úteis",
-    description: "Abra tickets para bugs, evoluções ou melhorias. Nossa equipe sênior analisa e responde dentro do SLA garantido."
+    titleKey: 'step2Title',
+    subtitleKey: 'step2Subtitle',
+    descriptionKey: 'step2Description'
   },
   {
     number: "3",
     icon: Code,
-    title: "Execução ágil",
-    subtitle: "devs sênior validando rápido",
-    description: "Desenvolvemos com qualidade, seguindo boas práticas. Code review obrigatório em todas as entregas."
+    titleKey: 'step3Title',
+    subtitleKey: 'step3Subtitle',
+    descriptionKey: 'step3Description'
   },
   {
     number: "4",
     icon: BarChart,
-    title: "Transparência total", 
-    subtitle: "relatórios + dashboard",
-    description: "Acompanhe consumo de horas, status dos tickets e métricas de desempenho em tempo real pelo dashboard."
+    titleKey: 'step4Title',
+    subtitleKey: 'step4Subtitle',
+    descriptionKey: 'step4Description'
   }
 ];
 
 const HowItWorksSection = () => {
+  const { currentLocale } = useLocaleContext();
+
   return (
     <section id="how-it-works" className="py-20 lg:py-32 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-2xl sm:text-3xl lg:text-5xl font-bold mb-6 text-foreground">
-            Como Funciona <span className="text-primary">(simples e direto)</span>
+            {getTranslation('howItWorksTitle', currentLocale).split('(simples e direto)')[0]}
+            <span className="text-primary">{getTranslation('howItWorksTitle', currentLocale).includes('(simples e direto)') ? '(simples e direto)' : '(simple and direct)'}</span>
           </h2>
           <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto">
-            Um processo otimizado para garantir agilidade, qualidade e transparência em cada etapa
+            {getTranslation('howItWorksSubtitle', currentLocale)}
           </p>
         </div>
         
         <div className="grid lg:grid-cols-2 gap-16 items-center max-w-6xl mx-auto">
           {/* Steps */}
           <div className="space-y-8">
-            {steps.map((step, index) => {
+            {stepsData.map((step, index) => {
               const Icon = step.icon;
               return (
                 <div 
@@ -68,13 +73,13 @@ const HowItWorksSection = () => {
                   
                   <div className="flex-1">
                     <h3 className="text-xl font-bold text-card-foreground mb-2">
-                      {step.title}
+                      {getTranslation(step.titleKey, currentLocale)}
                     </h3>
                     <p className="text-primary font-medium mb-3">
-                      {step.subtitle}
+                      {getTranslation(step.subtitleKey, currentLocale)}
                     </p>
                     <p className="text-muted-foreground leading-relaxed">
-                      {step.description}
+                      {getTranslation(step.descriptionKey, currentLocale)}
                     </p>
                   </div>
                 </div>
@@ -87,10 +92,10 @@ const HowItWorksSection = () => {
             <div className="bg-gradient-card rounded-2xl p-8 shadow-premium">
               <div className="text-center mb-8">
                 <h3 className="text-2xl font-bold text-card-foreground mb-4">
-                  Fluxo Otimizado
+                  {getTranslation('flowTitle', currentLocale)}
                 </h3>
                 <p className="text-muted-foreground">
-                  Da necessidade à entrega, tudo transparente
+                  {getTranslation('flowDescription', currentLocale)}
                 </p>
               </div>
               
@@ -101,7 +106,7 @@ const HowItWorksSection = () => {
                     1
                   </div>
                   <div className="flex-1 h-0.5 bg-primary/20 mx-4"></div>
-                  <div className="text-sm text-muted-foreground">Reserva</div>
+                  <div className="text-sm text-muted-foreground">{getTranslation('flowStep1', currentLocale)}</div>
                 </div>
                 
                 <div className="flex items-center justify-between">
@@ -109,7 +114,7 @@ const HowItWorksSection = () => {
                     2
                   </div>
                   <div className="flex-1 h-0.5 bg-primary/20 mx-4"></div>
-                  <div className="text-sm text-muted-foreground">Ticket</div>
+                  <div className="text-sm text-muted-foreground">{getTranslation('flowStep2', currentLocale)}</div>
                 </div>
                 
                 <div className="flex items-center justify-between">
@@ -117,7 +122,7 @@ const HowItWorksSection = () => {
                     3
                   </div>
                   <div className="flex-1 h-0.5 bg-primary/20 mx-4"></div>
-                  <div className="text-sm text-muted-foreground">Execução</div>
+                  <div className="text-sm text-muted-foreground">{getTranslation('flowStep3', currentLocale)}</div>
                 </div>
                 
                 <div className="flex items-center justify-between">
@@ -125,7 +130,7 @@ const HowItWorksSection = () => {
                     ✓
                   </div>
                   <div className="flex-1 h-0.5 bg-primary mx-4"></div>
-                  <div className="text-sm font-medium text-primary">Entrega</div>
+                  <div className="text-sm font-medium text-primary">{getTranslation('flowStep4', currentLocale)}</div>
                 </div>
               </div>
             </div>

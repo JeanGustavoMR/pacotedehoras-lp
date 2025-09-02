@@ -1,48 +1,53 @@
 import { AlertTriangle, DollarSign, Clock, UserX, BarChart3 } from "lucide-react";
+import { useLocaleContext } from "@/contexts/LocaleContext";
+import { getTranslation } from "@/translations";
 
-const problems = [
+const problemsData = [
   {
     icon: AlertTriangle,
-    title: "Fila de bugs e evoluções que nunca saem do backlog",
-    description: "Acúmulo infinito de tarefas técnicas que travam o crescimento"
+    titleKey: 'problem1Title',
+    descriptionKey: 'problem1Description'
   },
   {
     icon: DollarSign,
-    title: "CLT caro (salário + encargos + turnover)",
-    description: "Custos fixos altos mesmo em períodos de menor demanda"
+    titleKey: 'problem2Title',
+    descriptionKey: 'problem2Description'
   },
   {
     icon: Clock,
-    title: "Demandas imprevisíveis (meses tranquilos vs. picos caóticos)",
-    description: "Oscilação entre sobrecarga e ociosidade da equipe"
+    titleKey: 'problem3Title',
+    descriptionKey: 'problem3Description'
   },
   {
     icon: UserX,
-    title: "Freelancers sem compromisso → atrasos, retrabalho e prejuízo",
-    description: "Falta de responsabilidade e qualidade inconsistente"
+    titleKey: 'problem4Title',
+    descriptionKey: 'problem4Description'
   },
   {
     icon: BarChart3,
-    title: "Zero governança → ninguém sabe quanto gasta nem quando entrega",
-    description: "Falta de transparência e controle sobre projetos"
+    titleKey: 'problem5Title',
+    descriptionKey: 'problem5Description'
   }
 ];
 
 const ProblemsSection = () => {
+  const { currentLocale } = useLocaleContext();
+
   return (
     <section id="problems" className="py-20 lg:py-32 bg-gradient-card">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-2xl sm:text-3xl lg:text-5xl font-bold mb-6 text-foreground">
-            As dores que <span className="text-primary">travam seu negócio</span>
+            {getTranslation('problemsTitle', currentLocale).split('travam seu negócio')[0]}
+            <span className="text-primary">{getTranslation('problemsTitle', currentLocale).includes('travam seu negócio') ? 'travam seu negócio' : 'hinder your business'}</span>
           </h2>
           <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto">
-            Problemas comuns que impedem sua empresa de crescer e gerar os resultados esperados
+            {getTranslation('problemsSubtitle', currentLocale)}
           </p>
         </div>
         
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {problems.map((problem, index) => {
+          {problemsData.map((problem, index) => {
             const Icon = problem.icon;
             return (
               <div 
@@ -55,11 +60,11 @@ const ProblemsSection = () => {
                 </div>
                 
                 <h3 className="text-xl font-semibold mb-4 text-card-foreground group-hover:text-primary transition-colors">
-                  {problem.title}
+                  {getTranslation(problem.titleKey, currentLocale)}
                 </h3>
                 
                 <p className="text-muted-foreground leading-relaxed">
-                  {problem.description}
+                  {getTranslation(problem.descriptionKey, currentLocale)}
                 </p>
               </div>
             );
@@ -70,7 +75,7 @@ const ProblemsSection = () => {
         <div className="text-center mt-16">
           <div className="inline-flex items-center gap-2 bg-destructive/10 text-destructive px-6 py-3 rounded-full font-medium">
             <AlertTriangle className="w-5 h-5" />
-            Reconhece esses problemas no seu negócio?
+            {getTranslation('problemsCTA', currentLocale)}
           </div>
         </div>
       </div>

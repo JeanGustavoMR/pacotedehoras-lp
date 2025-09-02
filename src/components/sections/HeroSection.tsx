@@ -2,10 +2,18 @@ import { Button } from "@/components/ui/button";
 import { Shield, Clock, TrendingUp } from "lucide-react";
 import jeanImage from "/Jean.png";
 import soaresImage from "/Soares.png";
+import { useLocaleContext } from "@/contexts/LocaleContext";
+import { getTranslation } from "@/translations";
 
 const HeroSection = () => {
+  const { currentLocale, isBrazilian } = useLocaleContext();
+
   const handleWhatsAppClick = () => {
-    window.open('https://wa.me/5541998243692?text=Vim%20através%20do%20Site%20e%20quero%20minha%20consultoria%20Gratuita.', '_blank');
+    const phone = isBrazilian ? '5541998243692' : '15551234567';
+    const message = isBrazilian 
+      ? 'Vim%20através%20do%20Site%20e%20quero%20minha%20consultoria%20Gratuita.'
+      : 'I%20came%20through%20the%20website%20and%20want%20my%20free%20consultation.';
+    window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
   };
 
   return (
@@ -23,39 +31,36 @@ const HeroSection = () => {
               <Shield className="w-6 h-6 sm:w-8 sm:h-8 text-primary-glow mt-1 animate-float" />
               <div>
                 <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
-                  Seu Seguro de{" "}
-                  <span className="text-primary-glow">Tecnologia</span>
+                  {getTranslation('heroMainTitle', currentLocale)}{" "}
+                  <span className="text-primary-glow">{getTranslation('heroMainTitleHighlight', currentLocale)}</span>
                 </h1>
                 <p className="text-lg sm:text-xl lg:text-2xl font-medium text-primary-glow mb-4">
-                  Plano de Atendimento Dedicado com SLA Garantido
+                  {getTranslation('heroSubtitle2', currentLocale)}
                 </p>
               </div>
             </div>
             
             <h2 className="text-xl sm:text-2xl lg:text-3xl font-semibold mb-8 text-gray-200">
-              Flexibilidade, previsibilidade e resposta rápida para manter seu produto sempre no ar
+              {getTranslation('heroSubtitle', currentLocale)}
             </h2>
             
             <p className="text-base sm:text-lg lg:text-xl mb-10 text-gray-300">
-              Cansado de bugs eternos no backlog, freelas que somem e custos altíssimos com CLT? 
-              Com nosso <strong className="text-primary-glow">Plano de Atendimento Dedicado</strong>, você garante 
-              capacidade pré-reservada, com <strong className="text-white">SLA de até 24h úteis</strong> e 
-              até <strong className="text-primary-glow">40% menos custo</strong> do que manter dev fixo.
+              {getTranslation('heroDescription', currentLocale)}
             </p>
             
             {/* Stats */}
             <div className="flex flex-wrap gap-4 sm:gap-8 mb-10">
               <div className="flex items-center gap-2">
                 <Clock className="w-4 h-4 sm:w-5 sm:h-5 text-primary-glow" />
-                <span className="font-semibold text-sm sm:text-base">SLA 24h úteis</span>
+                <span className="font-semibold text-sm sm:text-base">{getTranslation('sla24h', currentLocale)}</span>
               </div>
               <div className="flex items-center gap-2">
                 <TrendingUp className="w-4 h-4 sm:w-5 sm:h-5 text-primary-glow" />
-                <span className="font-semibold text-sm sm:text-base">40% menos custos</span>
+                <span className="font-semibold text-sm sm:text-base">{getTranslation('cost40', currentLocale)}</span>
               </div>
               <div className="flex items-center gap-2">
                 <Shield className="w-4 h-4 sm:w-5 sm:h-5 text-primary-glow" />
-                <span className="font-semibold text-sm sm:text-base">Capacidade garantida</span>
+                <span className="font-semibold text-sm sm:text-base">{getTranslation('guaranteedCapacity', currentLocale)}</span>
               </div>
             </div>
             
@@ -67,7 +72,7 @@ const HeroSection = () => {
                 className="text-base sm:text-lg"
                 onClick={handleWhatsAppClick}
               >
-                Quero Garantir Minha Consultoria Gratuita
+                {getTranslation('ctaButton1', currentLocale)}
               </Button>
               <Button 
                 size="xl" 
@@ -75,7 +80,7 @@ const HeroSection = () => {
                 className="text-base sm:text-lg"
                 onClick={handleWhatsAppClick}
               >
-                Ver Planos
+                {getTranslation('ctaButton2', currentLocale)}
               </Button>
             </div>
           </div>
@@ -121,10 +126,10 @@ const HeroSection = () => {
                 {/* Texto central */}
                 <div className="mt-6 text-center">
                   <p className="text-white/90 text-sm sm:text-base font-medium">
-                    Especialistas em Tecnologia
+                    {getTranslation('techExperts', currentLocale)}
                   </p>
                   <p className="text-primary-glow text-xs sm:text-sm mt-1">
-                    +8 anos de experiência
+                    {getTranslation('experience', currentLocale)}
                   </p>
                 </div>
               </div>
@@ -134,14 +139,14 @@ const HeroSection = () => {
             <div className="absolute -top-3 -right-3 sm:-top-6 sm:-right-6 bg-white/10 backdrop-blur-md rounded-xl p-2 sm:p-4 animate-float">
               <div className="text-center">
                 <div className="text-lg sm:text-2xl font-bold text-primary-glow">24h</div>
-                <div className="text-xs sm:text-sm text-gray-300">SLA Garantido</div>
+                <div className="text-xs sm:text-sm text-gray-300">{getTranslation('slaGuaranteed', currentLocale)}</div>
               </div>
             </div>
             
             <div className="absolute -bottom-3 -left-3 sm:-bottom-6 sm:-left-6 bg-white/10 backdrop-blur-md rounded-xl p-2 sm:p-4 animate-float" style={{ animationDelay: '2s' }}>
               <div className="text-center">
                 <div className="text-lg sm:text-2xl font-bold text-primary-glow">40%</div>
-                <div className="text-xs sm:text-sm text-gray-300">Economia</div>
+                <div className="text-xs sm:text-sm text-gray-300">{getTranslation('savings', currentLocale)}</div>
               </div>
             </div>
           </div>
