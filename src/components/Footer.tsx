@@ -5,7 +5,7 @@ import { useLocaleContext } from "@/contexts/LocaleContext";
 import { getTranslation } from "@/translations";
 
 const Footer = () => {
-  const { currentLocale, isBrazilian } = useLocaleContext();
+  const { currentLocale } = useLocaleContext();
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -52,6 +52,7 @@ const Footer = () => {
             <Button 
               size="lg"
               className="bg-primary hover:bg-primary/90 text-sm sm:text-base w-full sm:w-auto"
+              onClick={() => window.open('https://wa.me/5541998243692?text=Vim%20através%20do%20Site%20e%20quero%20minha%20consultoria%20Gratuita.', '_blank')}
             >
               <span className="whitespace-normal sm:whitespace-nowrap">
                 {getTranslation('freeConsultation', currentLocale)}

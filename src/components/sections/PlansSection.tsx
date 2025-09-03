@@ -125,14 +125,10 @@ const plansData = [
 ];
 
 const PlansSection = () => {
-  const { currentLocale, formatPrice, isBrazilian } = useLocaleContext();
+  const { currentLocale, formatPrice } = useLocaleContext();
 
   const handleWhatsAppClick = () => {
-    const phone = isBrazilian ? '5541998243692' : '15551234567'; // Número americano fictício
-    const message = isBrazilian 
-      ? 'Vim%20através%20do%20Site%20e%20quero%20minha%20consultoria%20Gratuita.'
-      : 'I%20came%20through%20the%20website%20and%20want%20my%20free%20consultation.';
-    window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
+    window.open('https://wa.me/5541998243692?text=Vim%20através%20do%20Site%20e%20quero%20minha%20consultoria%20Gratuita.', '_blank');
   };
 
   return (

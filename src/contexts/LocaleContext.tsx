@@ -7,7 +7,6 @@ interface LocaleContextType {
   formatPrice: (priceInBRL: number) => string;
   getCurrentConfig: () => any;
   isLoading: boolean;
-  isBrazilian: boolean;
 }
 
 const LocaleContext = createContext<LocaleContextType | undefined>(undefined);

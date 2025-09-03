@@ -99,7 +99,6 @@ export const useLocale = () => {
     changeLocale,
     formatPrice,
     getCurrentConfig,
-    isLoading,
-    isBrazilian: currentLocale === 'pt-BR'
+    isLoading
   };
 };
